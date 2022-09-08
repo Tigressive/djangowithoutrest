@@ -1,14 +1,10 @@
-<html>
-    <header>
-        <title>Where's my stuff?</title>
+{% extends "base.html" %}
 
-    </header>
-
-    <body>
+{% block content %}
     <h1>
         Welcome to Where's my stuff
     </h1>
     <p>Today is {{today}}</p>
+<a href="{% url 'items.list' %}" class="btn btn-primary">Check out the items</a>
 
-    </body>
-</html>
+{% endblock %}
