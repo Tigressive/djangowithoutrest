@@ -5,5 +5,11 @@
     <h1 class="my-5">{{item.name}}</h1>
 
     <p>{{item.location}}</p>
+
+    <p>User: {{item.user.username}}</p>
+    <a href="{% url 'items.update' pk=item.id %}" class="btn btn-primary">Edit Item</a>
+    <a href="{% url 'items.delete' pk=item.id %}" class="btn btn-danger">Delete Item</a>
     </div>
+<a href="{% url 'items.list' %}" class="btn btn-secondary">Back</a>
+
 {% endblock %}

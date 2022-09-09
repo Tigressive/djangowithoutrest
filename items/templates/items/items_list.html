@@ -10,11 +10,12 @@
         <div class="p-3 border">
             <a href="{% url 'items.detail' pk=item.id %}" class="text-dark text-decoration-non"><h3>{{item.name}}</h3>
             </a>
-            {{item.location | truncatechars:20}}
+            {{item.location}}
         </div>
 
     </div>
     {% endfor %}
+    <a href="{% url 'items.new' %}" class="btn btn-primary">New Item</a>
 
 
 </div>

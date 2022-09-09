@@ -11,6 +11,6 @@ class ItemsForm(forms.ModelForm):
 
     def clean_name(self):
         name = self.cleaned_data['name']
-        if 'Django' not in name:
-            raise ValidationError('We only accept items about Django')
+        if len(name) <= 2:
+            raise ValidationError('Item names must be longer than 2 characters!')
         return name

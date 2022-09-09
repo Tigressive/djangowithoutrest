@@ -1,6 +1,15 @@
 from datetime import datetime
 from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import LoginView, LogoutView
+
+
+class LogoutInterfaceView(LogoutView):
+    template_name = 'home/logout.html'
+
+
+class LoginInterfaceView(LoginView):
+    template_name = 'home/login.html'
 
 
 class HomeView(TemplateView):
@@ -11,6 +20,5 @@ class HomeView(TemplateView):
 class AuthorizedView(LoginRequiredMixin, TemplateView):
     template_name = 'home/authorized.html'
     login_url = '/admin'
-
 
 # Create your views here.
