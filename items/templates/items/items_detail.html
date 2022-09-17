@@ -7,6 +7,9 @@
     <p>{{item.location}}</p>
 
     <p>User: {{item.user.username}}</p>
+    <p>Borrower: {{item.borrower.username}}</p>
+     <p>Privacy: {{item.isPrivate}}</p>
+    <p>Price: {{item.price}}</p>
     <a href="{% url 'items.update' pk=item.id %}" class="btn btn-primary">Edit Item</a>
     <a href="{% url 'items.delete' pk=item.id %}" class="btn btn-danger">Delete Item</a>
     </div>

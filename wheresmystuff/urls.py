@@ -15,10 +15,22 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.authtoken.views import obtain_auth_token
+
+import items.api_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
-    path('item/', include('items.urls'))
-
+    path('item/', include('items.urls')),
+    path('api/v1/items/', items.api_views.ItemList.as_view()),
+    path('api/v1/items/new', items.api_views.ItemCreation.as_view()),
+    path('api/v1/items/<int:id>/', items.api_views.ItemRetrieveUpdateDestroy.as_view()),
+    path('api/v1/items/<int:id>/borrow', items.api_views.BorrowItem.as_view()),
+    path('api/v1/items/auth', items.api_views.AuthenticateView.as_view()),
+    path('api/v1/items/authtoken', obtain_auth_token),
+    path('api/v1/items/myItems', items.api_views.UserItemList.as_view()),
+    path('api/v1/users/', items.api_views.UserList.as_view()),
+    path('api/v1/users/<int:id>/', items.api_views.UserRetrieveUpdateDestroy.as_view()),
+    path('api/v1/users/getByUsername/<str:username>', items.api_views.UserRetrieveUpdateDestroy.as_view())
 ]

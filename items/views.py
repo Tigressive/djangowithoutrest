@@ -4,7 +4,7 @@ from django.http import Http404, HttpResponseRedirect
 from django.views.generic import CreateView, DetailView, ListView, UpdateView
 from django.views.generic.edit import DeleteView
 
-from .forms import ItemsForm
+from .forms import ItemsForm, ItemCreateForm
 from .models import Items
 
 
@@ -23,7 +23,7 @@ class ItemUpdateView(UpdateView):
 class ItemCreateView(CreateView):
     model = Items
     success_url = '/item/items'
-    form_class = ItemsForm
+    form_class = ItemCreateForm
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
@@ -36,7 +36,7 @@ class ItemListView(LoginRequiredMixin, ListView):
     model = Items
     context_object_name = "items"
     template_name = "items/items_list.html"
-    login_url = "/admin"
+    login_url = "/login"
 
     def get_queryset(self):
         return self.request.user.items.all()
@@ -46,4 +46,4 @@ class ItemDetailView(DetailView):
     model = Items
     context_object_name = "item"
     template_name = "items/items_detail.html"
-# Create your views here.
+
