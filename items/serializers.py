@@ -7,7 +7,7 @@ from items.models import Items
 class ItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = Items
-        fields = ['id', 'name', 'location', 'isPrivate', 'price', 'owner']
+        fields = ['id', 'name', 'location', 'isPrivate', 'price', 'owner', 'borrowed_location']
 
 
 class BorrowSerializer(serializers.ModelSerializer):
@@ -32,4 +32,4 @@ class UserItemSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Items
-        fields = ['id', 'name', 'location', 'isPrivate', 'price', 'isBorrowed', 'owner']
+        fields = ['id', 'name', 'location', 'isPrivate', 'price', 'isBorrowed', 'owner', 'borrowed_location']

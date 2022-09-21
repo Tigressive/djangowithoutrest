@@ -134,10 +134,10 @@ class BorrowItem(RetrieveUpdateDestroyAPIView):
             item = response.data
 
             cache.set('item_data_{}'.format(item['id']), {
-                'name': item['name'],
-                'location': item['location'],
-                'isPrivate': item['isPrivate'],
-                'price': item['price'],
+                'id': item['id'],
+                'borrowed_location': item['borrowed_location'],
+                'borrower': item['borrower'],
+                'isBorrowed': item['isBorrowed'],
             })
         return response
 
